@@ -101,7 +101,7 @@ function processPostback(event){
                 }
             };
     console.log("Hello")
-    sendMessage(senderId, message);
+    sendMessage(senderId, {text:"Hello"});
     }
 }
 
