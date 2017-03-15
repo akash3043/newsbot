@@ -110,7 +110,7 @@ function processPostback(event){
                       ]
                     }
                 }
-            }
+            };
             sendMessage(senderId, message);
         });
     }
