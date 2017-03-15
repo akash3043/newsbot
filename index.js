@@ -57,39 +57,39 @@ function processPostback(event){
                     template_type: "generic",
                     elements: [{
                         title:"Entertainment",
-                        image_url:"http://placehold.it/350x150"
+                        image_url:"http://placehold.it/350x150",
                         buttons: [{
                             type: "postback",
                             title: "Entertainment",
                             payload: "Entertainment"
                           }]
                     },{
-                        title:"Business"
-                        image_url:"http://placehold.it/350x150"
+                        title:"Business",
+                        image_url:"http://placehold.it/350x150",
                         buttons: [{
                             type: "postback",
                             title: "Business",
                             payload: "Business"
                           }]
                     },{
-                        title:"General"
-                        image_url:"http://placehold.it/350x150"
+                        title:"General",
+                        image_url:"http://placehold.it/350x150",
                         buttons: [{
                             type: "postback",
                             title: "General",
                             payload: "General"
                           }]
                     },{
-                        title:"Sport"
-                        image_url:"http://placehold.it/350x150"
+                        title:"Sport",
+                        image_url:"http://placehold.it/350x150",
                         buttons: [{
                             type: "postback",
                             title: "Sport",
                             payload: "Sport"
                           }]
                     },{
-                        title:"Technology"
-                        image_url:"http://placehold.it/350x150"
+                        title:"Technology",
+                        image_url:"http://placehold.it/350x150",
                         buttons: [{
                             type: "postback",
                             title: "Technology",
