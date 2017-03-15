@@ -70,30 +70,3 @@ function processPostback(event){
         });
     }
 }
-
-
-
-
-curl -X POST -H "Content-Type: application/json" -d '{
-  "persistent_menu":[
-    {
-      "locale":"default",
-      "composer_input_disabled":true,
-      "call_to_actions":[
-        {
-          "title":"Select Category",
-          "type":"postback",
-          "payload":"Category",
-          "webview_height_ratio":"full"
-
-        },
-        {
-          "type":"postback",
-          "title":"Select Source",
-          "payload":"Source",
-          "webview_height_ratio":"full"
-        }
-      ]
-    },
-  ]
-}' "https://graph.facebook.com/v2.6/me/messenger_profile?access_token=YOUR_ACCESS_TOKEN_HERE"
