@@ -51,6 +51,7 @@ function processPostback(event){
         // and include it in the greeting
         //persistentMenu(senderId);
           var message = {
+            message :{
                 attachment : {
                     type : "template",
                     payload:{
@@ -91,14 +92,14 @@ function processPostback(event){
                         }]
                     }
                 }
-            };
+            }
+          };
     sendMessage(senderId, message);
     }
 }
 
 
 function sendMessage(recipientId, message) {
-    console.log("hi");
     request({
         url: "https://graph.facebook.com/v2.6/me/messages",
         qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
