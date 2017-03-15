@@ -55,18 +55,41 @@ function processPostback(event){
    "type":"template",
    "payload":{
      "template_type":"button",
-     "text":"What do you want to do next?",
+     "text":"Select the category you want to read about?",
      "buttons":[
        {
-         "type":"web_url",
-         "url":"https://petersapparel.parseapp.com",
-         "title":"Show Website"
-       },
-       {
-         "type":"postback",
-         "title":"Start Chatting",
-         "payload":"USER_DEFINED_PAYLOAD"
-       }
+             type:"postback",
+             title:"Business",
+             payload:"Business"
+           },{
+             type:"postback",
+             title:"Entertainment",
+             payload:"Entertainment"
+           },{
+             type:"postback",
+             title:"Gaming",
+             payload:"Gaming"
+           },{
+             type:"postback",
+             title:"General",
+             payload:"General"
+           },{
+             type:"postback",
+             title:"Music",
+             payload:"Music"
+           }, {
+             type:"postback",
+             title:"Science-and-Nature",
+             payload:"Science-and-Nature"
+           },{
+             type:"postback",
+             title:"Sport",
+             payload:"Sport"
+           },{
+             type:"postback",
+             title:"Technology",
+             payload:"Technology"
+         }
      ]
    }
  }
