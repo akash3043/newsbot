@@ -63,38 +63,6 @@ function processPostback(event){
                             title: "Entertainment",
                             payload: "Entertainment"
                           }]
-                    },{
-                        title:"Business",
-                        image_url:"http://placehold.it/350x150",
-                        buttons: [{
-                            type: "postback",
-                            title: "Business",
-                            payload: "Business"
-                          }]
-                    },{
-                        title:"General",
-                        image_url:"http://placehold.it/350x150",
-                        buttons: [{
-                            type: "postback",
-                            title: "General",
-                            payload: "General"
-                          }]
-                    },{
-                        title:"Sport",
-                        image_url:"http://placehold.it/350x150",
-                        buttons: [{
-                            type: "postback",
-                            title: "Sport",
-                            payload: "Sport"
-                          }]
-                    },{
-                        title:"Technology",
-                        image_url:"http://placehold.it/350x150",
-                        buttons: [{
-                            type: "postback",
-                            title: "Technology",
-                            payload: "Technology"
-                          }]
                     }]
                 }
             }
