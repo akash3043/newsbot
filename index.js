@@ -66,8 +66,52 @@ function processPostback(event){
                 name = bodyObj.first_name;
                 greeting = "Hi " + name + ". ";
             }
-            var message = greeting + "My name is feedly. I can give you top articles from multiple sources across genres. Select the below option to move forward. Or, you can type article tags/phrases to get the related articles";
-            sendMessage(senderId, {text: message});
+            var message = {
+                "attachment" : {
+                    "type" : "template",
+                    "payload":{
+                      "template_type":"button",
+                      "text" : "Select the category you want to read about?",
+                      "buttons" : [
+                          {
+                            "type":"postback",
+                            "title":"Business",
+                            "payload":"Business"
+                          },
+                          {
+                            "type":"postback",
+                            "title":"Entertainment",
+                            "payload":"Entertainment"
+                          },{
+                            "type":"postback",
+                            "title":"Gaming",
+                            "payload":"Gaming"
+                          },{
+                            "type":"postback",
+                            "title":"General",
+                            "payload":"General"
+                          },{
+                            "type":"postback",
+                            "title":"Music",
+                            "payload":"Music"
+                          },{
+                            "type":"postback",
+                            "title":"Science-and-Nature",
+                            "payload":"Science-and-Nature"
+                          },{
+                            "type":"postback",
+                            "title":"Sport",
+                            "payload":"Sport"
+                          },{
+                            "type":"postback",
+                            "title":"Technology",
+                            "payload":"Technology"
+                          },
+                      ]
+                    }
+                }
+            }
+            sendMessage(senderId, message);
         });
     }
 }
