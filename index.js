@@ -51,49 +51,49 @@ function processPostback(event){
         // and include it in the greeting
         //persistentMenu(senderId);
         message = {
-          "attachment":{
-   "type":"template",
-   "payload":{
-     "template_type":"button",
-     "text":"Select the category you want to read about?",
-     "buttons":[
-       {
-             type:"postback",
-             title:"Business",
-             payload:"Business"
-           },{
-             type:"postback",
-             title:"Entertainment",
-             payload:"Entertainment"
-           },{
-             type:"postback",
-             title:"Gaming",
-             payload:"Gaming"
-           },{
-             type:"postback",
-             title:"General",
-             payload:"General"
-           },{
-             type:"postback",
-             title:"Music",
-             payload:"Music"
-           }, {
-             type:"postback",
-             title:"Science-and-Nature",
-             payload:"Science-and-Nature"
-           },{
-             type:"postback",
-             title:"Sport",
-             payload:"Sport"
-           },{
-             type:"postback",
-             title:"Technology",
-             payload:"Technology"
-         }
-     ]
-   }
- }
-}
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "generic",
+                    elements: [{
+                        image_url:"http://placehold.it/350x150"
+                        buttons: [{
+                            type: "postback",
+                            title: "Entertainment",
+                            payload: "Entertainment"
+                          }]
+                    },{
+                        image_url:"http://placehold.it/350x150"
+                        buttons: [{
+                            type: "postback",
+                            title: "Business",
+                            payload: "Business"
+                          }]
+                    },{
+                        image_url:"http://placehold.it/350x150"
+                        buttons: [{
+                            type: "postback",
+                            title: "General",
+                            payload: "General"
+                          }]
+                    },{
+                        image_url:"http://placehold.it/350x150"
+                        buttons: [{
+                            type: "postback",
+                            title: "Sport",
+                            payload: "Sport"
+                          }]
+                    },{
+                        image_url:"http://placehold.it/350x150"
+                        buttons: [{
+                            type: "postback",
+                            title: "Technology",
+                            payload: "Technology"
+                          }]
+                    }]
+                }
+            }
+        };
                 /*attachment : {
                     type : "template",
                     payload:{
