@@ -50,24 +50,9 @@ function processPostback(event){
         // Get user's first name from the User Profile API
         // and include it in the greeting
         //persistentMenu(senderId);
-        message = {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "generic",
-                    elements: [{
-                        title:"Entertainment",
-                        image_url:"http://placehold.it/350x150",
-                        buttons: [{
-                            type: "postback",
-                            title: "Entertainment",
-                            payload: "Entertainment"
-                          }]
-                    }]
-                }
-            }
-        };
-                /*attachment : {
+
+        var message ={
+                attachment : {
                     type : "template",
                     payload:{
                       template_type:"button",
@@ -76,27 +61,7 @@ function processPostback(event){
                             type:"postback",
                             title:"Business",
                             payload:"Business"
-                          },{
-                            type:"postback",
-                            title:"Entertainment",
-                            payload:"Entertainment"
-                          },{
-                            type:"postback",
-                            title:"Gaming",
-                            payload:"Gaming"
-                          },{
-                            type:"postback",
-                            title:"General",
-                            payload:"General"
-                          },{
-                            type:"postback",
-                            title:"Music",
-                            payload:"Music"
                           }, {
-                            type:"postback",
-                            title:"Science-and-Nature",
-                            payload:"Science-and-Nature"
-                          },{
                             type:"postback",
                             title:"Sport",
                             payload:"Sport"
@@ -107,7 +72,7 @@ function processPostback(event){
                         }]
                     }
                 }
-            };*/
+            };
 
     sendMessage(senderId, message);
     }
