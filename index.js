@@ -49,6 +49,7 @@ function processPostback(event){
     if (payload === "Greeting") {
         // Get user's first name from the User Profile API
         // and include it in the greeting
+        persistentMenu(senderId);
         request({
             url: "https://graph.facebook.com/v2.6/" + senderId,
             qs: {
@@ -86,4 +87,36 @@ function sendMessage(recipientId,message){
       }
   });
 
+}
+function persistentMenu(senderId){
+ request({
+    url: 'https://graph.facebook.com/v2.6/me/thread_settings',
+    qs: {access_token:process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json:{
+        recipient: {id: senderId},
+        setting_type : "call_to_actions",
+        thread_state : "existing_thread",
+        call_to_actions:[
+            {
+              type:"postback",
+              title:"Select Source",
+              payload:"Source"
+            },
+            {
+              type:"postback",
+              title:"Select Category",
+              payload:"Category"
+            }
+          ]
+    }
+
+}, function(error, response, body) {
+    console.log(response)
+    if (error) {
+        console.log('Error sending messages: ', error)
+    } else if (response.body.error) {
+        console.log('Error: ', response.body.error)
+    }
+})
 }
