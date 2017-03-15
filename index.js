@@ -50,7 +50,7 @@ function processPostback(event){
         // Get user's first name from the User Profile API
         // and include it in the greeting
         //persistentMenu(senderId);
-            message = {
+          var message = {
                 attachment : {
                     type : "template",
                     payload:{
@@ -100,11 +100,13 @@ function processPostback(event){
                     }
                 }
             };
+    console.log("Hello")
     sendMessage(senderId, message);
     }
 }
 
 function sendMessage(recipientId, message){
+  console.log(recipientId);
   request({
       url: "https://graph.facebook.com/v2.6/me/messages",
       qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
