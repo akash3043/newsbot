@@ -14,13 +14,12 @@ app.get('/', function(req, res){
 
 })
 
-app.get('/webhook', function(req, res){
-
-    if(req.query["hub.verify_token"]===process.env.VERIFICATION_TOKEN){
-        console.log("Verified Webhook");
-        res.status(200).send(req.query(["hub.challenge"]));
-    }else{
-        console.error("Verification failed. Tokens do not match");
+app.get("/webhook", function (req, res) {
+    if (req.query["hub.verify_token"] === process.env.VERIFICATION_TOKEN) {
+        console.log("Verified webhook");
+        res.status(200).send(req.query["hub.challenge"]);
+    } else {
+        console.error("Verification failed. The tokens do not match.");
         res.sendStatus(403);
     }
-})
+});
