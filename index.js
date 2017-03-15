@@ -56,43 +56,35 @@ function processPostback(event){
                     payload:{
                       template_type:"button",
                       text : "Select the category you want to read about?",
-                      buttons : [
-                          {
+                      buttons : [{
                             type:"postback",
                             title:"Business",
                             payload:"Business"
-                          },
-                          {
+                          },{
                             type:"postback",
                             title:"Entertainment",
                             payload:"Entertainment"
-                          },
-                          {
+                          },{
                             type:"postback",
                             title:"Gaming",
                             payload:"Gaming"
-                          },
-                          {
+                          },{
                             type:"postback",
                             title:"General",
                             payload:"General"
-                          },
-                          {
+                          },{
                             type:"postback",
                             title:"Music",
                             payload:"Music"
-                          },
-                          {
+                          }, {
                             type:"postback",
                             title:"Science-and-Nature",
                             payload:"Science-and-Nature"
-                          },
-                          {
+                          },{
                             type:"postback",
                             title:"Sport",
                             payload:"Sport"
-                          },
-                          {
+                          },{
                             type:"postback",
                             title:"Technology",
                             payload:"Technology"
@@ -100,8 +92,7 @@ function processPostback(event){
                     }
                 }
             };
-    console.log("Hello")
-    sendMessage(senderId, {text:"Hello"});
+    sendMessage(senderId, message);
     }
 }
 
