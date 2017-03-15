@@ -49,70 +49,58 @@ function processPostback(event){
     if (payload === "Greeting") {
         // Get user's first name from the User Profile API
         // and include it in the greeting
-        persistentMenu(senderId);
-        request({
-            url: "https://graph.facebook.com/v2.6/" + senderId,
-            qs: {
-                access_token: process.env.PAGE_ACCESS_TOKEN,
-                fields: "first_name"
-            },
-            method: "GET"
-        }, function(error, response, body) {
-            var greeting = "";
-            if (error) {
-                console.log("Error getting user's name: " +  error);
-            } else {
-                var bodyObj = JSON.parse(body);
-                name = bodyObj.first_name;
-                greeting = "Hi " + name + ". ";
-            }
-            var message = {
-                "attachment" : {
-                    "type" : "template",
-                    "payload":{
-                      "template_type":"button",
-                      "text" : "Select the category you want to read about?",
-                      "buttons" : [
+        //persistentMenu(senderId);
+            message = {
+                attachment : {
+                    type : "template",
+                    payload:{
+                      template_type:"button",
+                      text : "Select the category you want to read about?",
+                      buttons : [
                           {
-                            "type":"postback",
-                            "title":"Business",
-                            "payload":"Business"
+                            type:"postback",
+                            title:"Business",
+                            payload:"Business"
                           },
                           {
-                            "type":"postback",
-                            "title":"Entertainment",
-                            "payload":"Entertainment"
-                          },{
-                            "type":"postback",
-                            "title":"Gaming",
-                            "payload":"Gaming"
-                          },{
-                            "type":"postback",
-                            "title":"General",
-                            "payload":"General"
-                          },{
-                            "type":"postback",
-                            "title":"Music",
-                            "payload":"Music"
-                          },{
-                            "type":"postback",
-                            "title":"Science-and-Nature",
-                            "payload":"Science-and-Nature"
-                          },{
-                            "type":"postback",
-                            "title":"Sport",
-                            "payload":"Sport"
-                          },{
-                            "type":"postback",
-                            "title":"Technology",
-                            "payload":"Technology"
+                            type:"postback",
+                            title:"Entertainment",
+                            payload:"Entertainment"
                           },
-                      ]
+                          {
+                            type:"postback",
+                            title:"Gaming",
+                            payload:"Gaming"
+                          },
+                          {
+                            type:"postback",
+                            title:"General",
+                            payload:"General"
+                          },
+                          {
+                            type:"postback",
+                            title:"Music",
+                            payload:"Music"
+                          },
+                          {
+                            type:"postback",
+                            title:"Science-and-Nature",
+                            payload:"Science-and-Nature"
+                          },
+                          {
+                            type:"postback",
+                            title:"Sport",
+                            payload:"Sport"
+                          },
+                          {
+                            type:"postback",
+                            title:"Technology",
+                            payload:"Technology"
+                        }]
                     }
                 }
             };
-            sendMessage(senderId, message);
-        });
+    sendMessage(senderId, message);
     }
 }
 
@@ -132,7 +120,7 @@ function sendMessage(recipientId, message){
   });
 
 }
-function persistentMenu(senderId){
+/*function persistentMenu(senderId){
  request({
     url: 'https://graph.facebook.com/v2.6/me/thread_settings',
     qs: {access_token:process.env.PAGE_ACCESS_TOKEN},
@@ -163,4 +151,4 @@ function persistentMenu(senderId){
         console.log('Error: ', response.body.error)
     }
 })
-}
+}*/
