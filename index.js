@@ -290,7 +290,12 @@ function processMessage(event){
         var message = event.message;
         var senderId = event.sender.id;
         if(message.text){
-            console.log("hi");
+            var text = message.text;
+            if(text==='source'){
+              getSourcesList(senderId);
+            }else if(text==='category'){
+                getCategoryList(senderId);
+            }
         }
     }
 
