@@ -86,8 +86,6 @@ function processPostback(event){
     sendMessage(senderId, message);
   }else if(payload==="Business"){
 
-     console.log("business")
-
       getSourceList("business", senderId)
   }else if(payload==="Technology"){
       getSourceList("technology", senderId)
@@ -119,15 +117,15 @@ function sendMessage(recipientId, message) {
 }
 
 function getSourceList(category, userId){
-console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category);
+//console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category);
     request("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category, function(error, response, body){
         if(!error&&response.statusCode===200){
-          console.log("request passed")
+          //console.log("request passed")
             var sourceObj = JSON.parse(body);
             if(sourceObj.status==='ok'){
                 var sourcesArr = sourceObj.sources;
-                console.log(sourcesArr);
-                console.log(sourcesArr.length);
+                //console.log(sourcesArr);
+                //console.log(sourcesArr.length);
                 var elements = new Array(sourcesArr.length);
                 for(var i=0; i<sourcesArr.length&&i<10;i++){
                   elements[i]={
@@ -144,7 +142,7 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
                         ]
                   }
 
-                  console.log(elements);
+                  //console.log(elements);
 
 
 
