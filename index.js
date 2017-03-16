@@ -171,7 +171,7 @@ function getNewsArticles(source, userId ){
                   elements[i]={
                     title : articlesArr[i].title,
                     subtitle : articlesArr[i].description.substring(0,80),
-                    image_url:articlesArr[i].urlsToImage.small,
+                    image_url:articlesArr[i].urlsToImage,
                     buttons: [
                             {
                                 "title": "Read More",
