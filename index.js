@@ -119,7 +119,7 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
             for(var i=0; i<sourcesArr.length;i++){
               elements[i]={
                 title : sourcesArr[i].name,
-                subtitle : sourcesArr[i].description.split(0,80),
+                subtitle : sourcesArr[i].description.substring(0,80),
                 image_url:sourcesArr[i].urlsToLogos.large,
                     "buttons": [
                         {
