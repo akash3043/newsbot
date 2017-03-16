@@ -378,7 +378,7 @@ function getSourcesList(userId){
 
  for(var i=0; i<sourcesList.sport.length;i++){
      elements[index] = {
-       title : "Technology",
+       title : "Sports",
        buttons : [
          {
            "title" : sourcesList.sport[i][0].title,
