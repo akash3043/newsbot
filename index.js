@@ -170,7 +170,7 @@ function getNewsArticles(source, userId ){
                 for(var i=0; i<articlesArr.length&&i<10;i++){
                   elements[i]={
                     title : articlesArr[i].title,
-                    subtitle : articlesArr.description.substring(0,80),
+                    subtitle : articlesArr[i].description.substring(0,80),
                     image_url:articlesArr[i].urlsToImage.small,
                     buttons: [
                             {
