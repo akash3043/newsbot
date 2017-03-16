@@ -65,20 +65,16 @@ function processPostback(event){
                     type : "template",
                     payload:{
                       template_type:"button",
-                      text : "Select the category you want to read about?",
+                      text : "Select one of the options below to start",
                       buttons : [{
                             type:"postback",
-                            title:"Business",
-                            payload:"Business"
+                            title:"Select Category",
+                            payload:"Category"
                           }, {
                             type:"postback",
-                            title:"Sport",
-                            payload:"Sport"
-                          },{
-                            type:"postback",
-                            title:"Technology",
-                            payload:"Technology"
-                        }]
+                            title:"Select Source",
+                            payload:"Source"
+                          }]
                     }
                 }
             };
@@ -92,6 +88,11 @@ function processPostback(event){
 
   }else if(payload==="Sport"){
     getSourceList("sport", senderId)
+
+  }else if(payload==="Category"){
+     getCategoryList(senderId);
+
+  }else if(payload==="Source"){
 
   }else{
       //console.log(payload);
@@ -222,5 +223,34 @@ function processMessage(event){
             console.log("hi");
         }
     }
+
+}
+
+function getCategoryList(userId){
+
+  var message ={
+          attachment : {
+              type : "template",
+              payload:{
+                template_type:"button",
+                text : "Which category you would like to read about?",
+                buttons : [{
+                      type:"postback",
+                      title:"Business",
+                      payload:"Business"
+                    }, {
+                      type:"postback",
+                      title:"Sport",
+                      payload:"Sport"
+                    },{
+                      type:"postback",
+                      title:"Technology",
+                      payload:"Technology"
+                    }]
+              }
+          }
+      };
+
+sendMessage(userId, message);
 
 }
