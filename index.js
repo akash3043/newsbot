@@ -152,7 +152,7 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
                 };
                   sendMessage(userId, message)
             }else{
-                sendMessage(userId,{text:"Something went wrong. Please try again"})
+                sendMessage(userId,{text:"Something went terribly wrong. Please try again"})
             }
         }else{
             sendMessage(userId,{text:"Something went wrong. Please try again"})
