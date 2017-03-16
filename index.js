@@ -75,15 +75,6 @@ function processPostback(event){
             };
 
     sendMessage(senderId, message);
-  }else if(payload==='Business'){
-      getSourceList('business', senderId)
-
-  }else if(payload==='Sport'){
-      getSourceList('sport', senderId)
-
-  }else if(payload==='Technology'){
-      getSourceList('technology', senderId)
-
   }
 }
 
