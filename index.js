@@ -118,7 +118,7 @@ function getSourceList(category, userId){
               }
 
               var message = {
-                  attachment = {
+                  attachment :{
                       type:"template",
                       payload:{
                           template_type:"generic",
