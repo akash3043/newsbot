@@ -75,7 +75,16 @@ function processPostback(event){
             };
 
     sendMessage(senderId, message);
-    }
+  }else if(payload==='Business'){
+      getSourceList('business', senderId)
+
+  }else if(payload==='Sport'){
+      getSourceList('sport', senderId)
+
+  }else if(payload==='Technology'){
+      getSourceList('technology', senderId)
+
+  }
 }
 
 
@@ -93,4 +102,42 @@ function sendMessage(recipientId, message) {
             console.log("Error sending message: " + response.error);
         }
     });
+}
+
+function getSourceList(category, userId){
+
+    request("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category, function(error, response, body){
+        if(!error&&response.status==='ok'){
+            var sourceObj = JSON.parse(body);
+            var sourcesArr = sourceObj.sources;
+            var elements = new Array(sourcesArr.length);
+            for(var i=0; i<sourcesArr.length;i++){
+              elements[i]={
+                title : sourcesArr[i].name,
+                subtitle : sourcesArr[i].description.split(0,80),
+                image_url:sourcesArr[i].urlsToLogos.large,
+                    "buttons": [
+                        {
+                            "title": "Get top news",
+                            "type": "postback",
+                            "payload":sourcesArr[i].id,
+
+                        }
+                    ]
+              }
+
+              var message = {
+                  attachment = {
+                      type:"template",
+                      payload:{
+                          template_type:"generic",
+                          elements:elements,
+                      }
+                  }
+              };
+              sendMessage(userId, message)
+            }
+
+        }
+    })
 }
