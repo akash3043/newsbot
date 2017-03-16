@@ -151,12 +151,12 @@ function processPostback(event){
     sendMessage(senderId, message);
   }else if(payload==="Business"){
 
-      getSourceList("business", senderId)
+      //getSourceList("business", senderId)
   }else if(payload==="Technology"){
-      getSourceList("technology", senderId)
+    //  getSourceList("technology", senderId)
 
   }else if(payload==="Sport"){
-    getSourceList("sport", senderId)
+    //getSourceList("sport", senderId)
 
   }else if(payload==="Category"){
      getCategoryList(senderId);
@@ -165,9 +165,6 @@ function processPostback(event){
 
     getSourcesList(senderId);
 
-  }else{
-      //console.log(payload);
-      getNewsArticles(payload, senderId);
   }
 }
 
