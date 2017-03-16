@@ -165,6 +165,8 @@ function processPostback(event){
 
     getSourcesList(senderId);
 
+  }else{
+    getNewsArticles(payload, senderId)
   }
 }
 
