@@ -115,7 +115,7 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
         if(!error&&response.statusCode===200){
           console.log("request passed")
             var sourceObj = JSON.parse(body);
-            if(body.status==='ok'){
+            if(sourceObj.status==='ok'){
                 var sourcesArr = sourceObj.sources;
                 console.log(sourcesArr);
                 console.log(sourcesArr.length);
