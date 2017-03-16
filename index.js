@@ -252,7 +252,7 @@ function getNewsArticles(source, userId ){
                     image_url:articlesArr[i].urlsToImage,
                     buttons: [
                             {
-                                "title": "Read More",
+                                "title": "Read More on "+newsObj.source,
                                 "type": "web_url",
                                 "url":articlesArr[i].url,
 
