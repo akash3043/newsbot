@@ -120,7 +120,7 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
               elements[i]={
                 title : sourcesArr[i].name,
                 subtitle : sourcesArr[i].description.substring(0,80),
-                //image_url:sourcesArr[i].urlsToLogos.small,
+                image_url:sourcesArr[i].urlsToLogos.small,
                 buttons: [
                         {
                             "title": "Get top news",
