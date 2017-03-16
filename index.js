@@ -239,7 +239,7 @@ function getSourceList(category, userId){
 }
 
 function getNewsArticles(source, userId ){
-    request("https://newsapi.org/v1/articles?sortBy=top&apiKey=387b12d8c1e74fde941fbb27e7764398&source="+source, function(error, response, body){
+    request("https://newsapi.org/v1/articles?apiKey=387b12d8c1e74fde941fbb27e7764398&source="+source, function(error, response, body){
         if(!error&&response.statusCode===200){
             var newsObj = JSON.parse(body);
             if(newsObj.status==='ok'){
