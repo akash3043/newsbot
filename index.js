@@ -86,6 +86,8 @@ function processPostback(event){
   }else if(payload==="Sport"){
     getSourceList("sport", senderId)
 
+  }else {
+    getNewsArticles(senderId, payload);
   }
 }
 
@@ -121,6 +123,7 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
                 title : sourcesArr[i].name,
                 subtitle : sourcesArr[i].description.substring(0,80),
                 image_url:sourcesArr[i].urlsToLogos.small,
+                image_aspect_ratio:square,
                 buttons: [
                         {
                             "title": "Get top news",
