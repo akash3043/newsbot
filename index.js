@@ -77,6 +77,8 @@ function processPostback(event){
     sendMessage(senderId, message);
   }else if(payload==="Business"){
 
+     console.log("business")
+
       getSourceList("business", senderId)
   }else if(payload==="Technology"){
       getSourceList("technology", senderId)
@@ -105,11 +107,14 @@ function sendMessage(recipientId, message) {
 }
 
 function getSourceList(category, userId){
-
+console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category);
     request("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category, function(error, response, body){
         if(!error&&response.status==='ok'){
+          console.log("request passed")
             var sourceObj = JSON.parse(body);
             var sourcesArr = sourceObj.sources;
+            console.log(sourcesArr);
+            console.log(sourcesArr.length);
             var elements = new Array(sourcesArr.length);
             for(var i=0; i<sourcesArr.length;i++){
               elements[i]={
@@ -126,18 +131,19 @@ function getSourceList(category, userId){
                     ]
               }
 
-              var message = {
-                  attachment :{
-                      type:"template",
-                      payload:{
-                          template_type:"generic",
-                          elements:elements,
-                      }
-                  }
-              };
-              sendMessage(userId, message)
-            }
 
+
+            }
+            var message = {
+                attachment :{
+                    type:"template",
+                    payload:{
+                        template_type:"generic",
+                        elements:elements,
+                    }
+                }
+            };
+              sendMessage(userId, message)
         }
     })
 }
