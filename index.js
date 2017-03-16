@@ -34,6 +34,8 @@ app.post("/webhook", function (req, res) {
             entry.messaging.forEach(function(event) {
                 if (event.postback) {
                     processPostback(event);
+                }else if(event.message){
+                    processMessage(event);
                 }
             });
         });
@@ -52,6 +54,9 @@ function processPostback(event){
         //persistentMenu(senderId);
 
         var message ={
+                text:{
+                    "Hi, Welcome to 'News on the Go' Bot. Select the category or the news source to get the top news articles currently. Category return top news articles from multiple resources and news source returns the top articles published on that specific platform. You can also access category or news source options from 'menu' button on the left of text box. So, Lets read some news "
+                },
                 attachment : {
                     type : "template",
                     payload:{
@@ -205,4 +210,15 @@ function getNewsArticles(source, userId ){
             sendMessage(userId,{text:"Something went wrong. Please try again"})
         }
     })
+}
+
+function processMessage(event){
+    if(!event.message.is_echo){
+        var message = event.message;
+        var senderId = event.sender.id;
+        if(message.text){
+            console.log("hi");
+        }
+    }
+
 }
