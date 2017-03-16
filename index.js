@@ -53,10 +53,14 @@ function processPostback(event){
         // and include it in the greeting
         //persistentMenu(senderId);
 
+      var greetings ={
+
+        text:"Hi, Welcome to 'News on the Go' Bot. Select the category or the news source to get the top news articles currently. Category return top news articles from multiple resources and news source returns the top articles published on that specific platform. You can also access category or news source options from 'menu' button on the left of text box. So, Lets read some news "
+        },
+
+        sendMessage(senderId, greetings);
+
         var message ={
-                text:{
-                    "Hi, Welcome to 'News on the Go' Bot. Select the category or the news source to get the top news articles currently. Category return top news articles from multiple resources and news source returns the top articles published on that specific platform. You can also access category or news source options from 'menu' button on the left of text box. So, Lets read some news "
-                },
                 attachment : {
                     type : "template",
                     payload:{
