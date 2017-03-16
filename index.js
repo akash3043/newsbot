@@ -131,6 +131,8 @@ console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde9
                     ]
               }
 
+              console.log(elements);
+
 
 
             }
