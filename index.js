@@ -109,7 +109,7 @@ function sendMessage(recipientId, message) {
 function getSourceList(category, userId){
 console.log("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category);
     request("https://newsapi.org/v1/sources?language=en&apiKey=387b12d8c1e74fde941fbb27e7764398&category="+category, function(error, response, body){
-        if(!error&&response.status==='ok'){
+        if(!error&&response.statusCode===200){
           console.log("request passed")
             var sourceObj = JSON.parse(body);
             var sourcesArr = sourceObj.sources;
