@@ -480,13 +480,13 @@ function getTechnologyArticles(userId){
           if(err) {
               console.log("error: "+ err);
           }else{
-            getShuffledArticles(results);
+            getShuffledArticles(results, userId);
           }
 
       })
   }
 
-  function getShuffledArticles(results){
+  function getShuffledArticles(results, userId){
       var outputArr = []
       results.forEach(function(element){
           outputArr = outputArr.concat(element);
