@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var async = require('async');
 
 var app = express();
 app.use(bodyParser.urlencoded({extended:false}));
@@ -150,13 +151,13 @@ function processPostback(event){
 
     sendMessage(senderId, message);
   }else if(payload==="Business"){
+    getBusinessArticles(senderId);
 
-      //getSourceList("business", senderId)
   }else if(payload==="Technology"){
-    //  getSourceList("technology", senderId)
+    getTechnologyArticles(senderId);
 
   }else if(payload==="Sport"){
-    //getSourceList("sport", senderId)
+    getSportArticles(senderId);
 
   }else if(payload==="Category"){
      getCategoryList(senderId);
@@ -414,4 +415,32 @@ function getSourcesList(userId){
    sendMessage(userId, message)
 
 
+}
+
+function getBusinessArticles(userId){
+
+    async.parallel([
+      function(callback){
+          request("https://newsapi.org/v1/articles?source=techcrunch&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+            if(!error&&response.statusCode){
+                var responseObj = JSON.parse(body);
+                var newsArticles = responseObj.articles;
+                callback('null', newsArticles);
+            }
+
+          })
+      }, function(callback){
+        request("https://newsapi.org/v1/articles?source=hacker-news&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+          if(!error&&response.statusCode){
+              var responseObj = JSON.parse(body);
+              var newsArticles = responseObj.articles;
+              callback('null', newsArticles);
+          }
+
+        })
+      }
+    ], function(err, results){
+        if(err) sendMessage(userId, {text:"Something went wrong. Please try again"})
+        console.log(results);
+    })
 }
