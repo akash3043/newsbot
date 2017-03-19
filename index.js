@@ -417,34 +417,121 @@ function getSourcesList(userId){
 
 }
 
-function getBusinessArticles(userId){
+function getTechnologyArticles(userId){
 
-    async.parallel({
-      techcrunch:function(callback){
-          request("https://newsapi.org/v1/articles?source=techcrunch&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+      async.parallel([
+        function(callback){
+            request("https://newsapi.org/v1/articles?source=techcrunch&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+              if(!error&&response.statusCode){
+                  var responseObj = JSON.parse(body);
+                  var newsArticles = responseObj.articles;
+                  callback(null, newsArticles);
+              }
+
+            })
+        },
+        function(callback){
+          request("https://newsapi.org/v1/articles?source=techradar&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
             if(!error&&response.statusCode){
                 var responseObj = JSON.parse(body);
                 var newsArticles = responseObj.articles;
-                callback('null', newsArticles);
+                callback(null, newsArticles);
             }
 
           })
-      },
-      techradar:function(callback){
-        request("https://newsapi.org/v1/articles?source=techradar&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
-          if(!error&&response.statusCode){
-              var responseObj = JSON.parse(body);
-              var newsArticles = responseObj.articles;
-              callback('null', newsArticles);
+        }, function(callback){
+            request("https://newsapi.org/v1/articles?source=hacker-news&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+              if(!error&&response.statusCode){
+                  var responseObj = JSON.parse(body);
+                  var newsArticles = responseObj.articles;
+                  callback(null, newsArticles);
+              }
+
+            })
+        },function(callback){
+            request("https://newsapi.org/v1/articles?source=the-next-web&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+              if(!error&&response.statusCode){
+                  var responseObj = JSON.parse(body);
+                  var newsArticles = responseObj.articles;
+                  callback(null, newsArticles);
+              }
+
+            })
+          },function(callback){
+              request("https://newsapi.org/v1/articles?source=the-verge&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+                if(!error&&response.statusCode){
+                    var responseObj = JSON.parse(body);
+                    var newsArticles = responseObj.articles;
+                    callback(null, newsArticles);
+                }
+
+              })
+            },function(callback){
+                request("https://newsapi.org/v1/articles?source=engadget&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+                  if(!error&&response.statusCode){
+                      var responseObj = JSON.parse(body);
+                      var newsArticles = responseObj.articles;
+                      callback(null, newsArticles);
+                  }
+
+                })
+              }
+      ], function(err, results){
+          if(err) {
+              console.log("error: "+ err);
+          }else{
+            getShuffledArticles(results);
           }
 
-        })
-      }
-    }, function(err, results){
-        if(err) {
-            sendMessage(userId, {text:"Something went wrong. Please try again"})
-            console.log(err);
+      })
+  }
+
+  function getShuffledArticles(results){
+      var outputArr = []
+      results.forEach(function(element){
+          outputArr = outputArr.concat(element);
+      })
+      outputArr = shuffleArticles(outputArr);
+      for(var i=0; i<outputArr.length&&i<10;i++){
+        elements[i]={
+          title : outputArr[i].title,
+          subtitle : outputArr[i].description.substring(0,80),
+          image_url:outputArr[i].urlsToImage,
+          buttons: [
+                  {
+                      "title": "Read More",
+                      "type": "web_url",
+                      "url":outputArr[i].url,
+
+                  }
+              ]
         }
-        console.log(results);
-    })
+
+
+
+      }
+      var message = {
+          attachment :{
+              type:"template",
+              payload:{
+                  template_type:"generic",
+                  elements:elements,
+              }
+          }
+      };
+        sendMessage(userId, message)
+
+  }
+
+  function shuffleArticles(results){
+
+      var length  = results.length;
+      for(var i=length-1;i>0;i--){
+          var j = Math.floor(Math.random()*(i+1));
+          var temp = results[i];
+          results[i]=results[j];
+          results[j] = temp;
+      }
+      return results;
+  }
 }
