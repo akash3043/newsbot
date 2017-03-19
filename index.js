@@ -419,8 +419,8 @@ function getSourcesList(userId){
 
 function getBusinessArticles(userId){
 
-    async.parallel([
-      function(callback){
+    async.parallel({
+      techcrunch:function(callback){
           request("https://newsapi.org/v1/articles?source=techcrunch&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
             if(!error&&response.statusCode){
                 var responseObj = JSON.parse(body);
@@ -429,7 +429,8 @@ function getBusinessArticles(userId){
             }
 
           })
-      }, function(callback){
+      },
+      techradar:function(callback){
         request("https://newsapi.org/v1/articles?source=techradar&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
           if(!error&&response.statusCode){
               var responseObj = JSON.parse(body);
@@ -439,7 +440,7 @@ function getBusinessArticles(userId){
 
         })
       }
-    ], function(err, results){
+    }, function(err, results){
         if(err) {
             sendMessage(userId, {text:"Something went wrong. Please try again"})
             console.log(err.message);
