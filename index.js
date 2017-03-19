@@ -430,7 +430,7 @@ function getBusinessArticles(userId){
 
           })
       }, function(callback){
-        request("https://newsapi.org/v1/articles?source=hacker-news&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
+        request("https://newsapi.org/v1/articles?source=techradar&apiKey=387b12d8c1e74fde941fbb27e7764398", function(error, response, body){
           if(!error&&response.statusCode){
               var responseObj = JSON.parse(body);
               var newsArticles = responseObj.articles;
@@ -440,7 +440,10 @@ function getBusinessArticles(userId){
         })
       }
     ], function(err, results){
-        if(err) sendMessage(userId, {text:"Something went wrong. Please try again"})
+        if(err) {
+            sendMessage(userId, {text:"Something went wrong. Please try again"})
+            console.log(err.message);
+        }
         console.log(results);
     })
 }
