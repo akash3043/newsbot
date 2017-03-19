@@ -443,7 +443,7 @@ function getBusinessArticles(userId){
     }, function(err, results){
         if(err) {
             sendMessage(userId, {text:"Something went wrong. Please try again"})
-            console.log(err.message);
+            console.log(err);
         }
         console.log(results);
     })
