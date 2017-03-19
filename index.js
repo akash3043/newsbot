@@ -535,4 +535,3 @@ function getTechnologyArticles(userId){
       }
       return results;
   }
-}
