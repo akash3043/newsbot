@@ -714,7 +714,7 @@ function getTechnologyArticles(userId){
         sendMessage(userId, {text:"Something wnet wrong. Please try again"});
       }else{
           var counter = result.counter;
-          var newsArticles = results.output;
+          var newsArticles = result.output;
           if(counter===newsArticles.length){
             sendMessage(userId, {text:"No more latest articles in this category. Try again later or read about other category?"})
           }else{
