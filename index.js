@@ -3,6 +3,8 @@ var request = require('request');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var async = require('async');
+var UserInput = require("./models/userInput");
+var db  = mongoose.connect(process.env.MONGODB_URI);
 
 var app = express();
 app.use(bodyParser.urlencoded({extended:false}));
@@ -486,7 +488,7 @@ function getTechnologyArticles(userId){
           if(err) {
               console.log("error: "+ err);
           }else{
-            getShuffledArticles(results, userId);
+            getShuffledArticles(results, userId, "technology");
           }
 
       })
@@ -555,7 +557,7 @@ function getTechnologyArticles(userId){
             if(err) {
                 console.log("error: "+ err);
             }else{
-              getShuffledArticles(results, userId);
+              getShuffledArticles(results, userId, "business");
             }
 
         })
@@ -623,18 +625,19 @@ function getTechnologyArticles(userId){
               if(err) {
                   console.log("error: "+ err);
               }else{
-                getShuffledArticles(results, userId);
+                getShuffledArticles(results, userId, "sport");
               }
 
           })
       }
 
-  function getShuffledArticles(results, userId){
+  function getShuffledArticles(results, userId, category){
       var outputArr = []
       results.forEach(function(element){
           outputArr = outputArr.concat(element);
       })
       outputArr = shuffleArticles(outputArr);
+      storeResultsInDB(category,userId,outputArr)
       var elements = new Array(10)
       for(var i=0; i<outputArr.length&&i<10;i++){
         elements[i]={
@@ -677,4 +680,22 @@ function getTechnologyArticles(userId){
           results[j] = temp;
       }
       return results;
+  }
+
+  function storeResultsInDB(category, userId, results){
+
+    var query = {user_id : userId}
+    var update = {
+        user_id:userId,
+        output:results,
+        category:category,
+        counter : results.length>10?10:results.length;
+    }
+    var options : {upsert:true};
+    UserInput.findOneAndUpdate(query, update,options, function(err, result){
+        if(err){
+            console.log("Database error: " err);
+        }
+    })
+
   }
