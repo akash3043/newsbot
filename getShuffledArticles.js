@@ -7,7 +7,7 @@ module.exports=function getShuffledArticles(results, userId, category){
         outputArr = outputArr.concat(element);
     })
     outputArr = shuffleArticles(outputArr);
-    console.log(outputArr);
+    //console.log(outputArr);
     getNewsTemplates(outputArr, userId);
     storeResultsInDB(category,userId,outputArr)
   function shuffleArticles(results){
