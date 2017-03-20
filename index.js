@@ -723,7 +723,7 @@ function getTechnologyArticles(userId){
             getNewsTemplates(outputArr, userId);
             UserInput.findOneAndUpdate(query, {counter:newCounter}, {upsert:true}, function(err, result){
                 if(err){
-                    console.log("Database error: ":+ err)
+                    console.log("Database error: "+ err)
                 }
             })
 
