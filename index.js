@@ -637,7 +637,7 @@ function getTechnologyArticles(userId){
           outputArr = outputArr.concat(element);
       })
       outputArr = shuffleArticles(outputArr);
-      //storeResultsInDB(category,userId,outputArr)
+      storeResultsInDB(category,userId,outputArr)
       var elements = new Array(10)
       for(var i=0; i<outputArr.length&&i<10;i++){
         elements[i]={
