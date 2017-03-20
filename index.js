@@ -305,7 +305,7 @@ function processMessage(event){
             }else if(text==='sport'){
                 getSportArticles(senderId);
             }else if(text==='more'){
-                //getMoreNewsArticles(senderId);
+                getMoreNewsArticles(senderId);
             }
         }
     }
