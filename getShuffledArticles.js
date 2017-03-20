@@ -1,5 +1,5 @@
 var getNewsTemplates = require('./getNewsTemplates');
-vat storeResultsInDB = require('./storeResultsInDB');
+var storeResultsInDB = require('./storeResultsInDB');
 
 module.exports=function getShuffledArticles(results, userId, category){
     var outputArr = []
