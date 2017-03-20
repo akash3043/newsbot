@@ -1,4 +1,4 @@
-var request = require('./request');
+var request = require('request');
 var sendMessage = require('./sendMessage');
 
 module.exports = function getSourceList(category, userId){
