@@ -247,36 +247,7 @@ function getNewsArticles(source, userId ){
             var newsObj = JSON.parse(body);
             if(newsObj.status==='ok'){
                 var articlesArr = newsObj.articles
-                var elements = new Array(articlesArr.length)
-                for(var i=0; i<articlesArr.length&&i<10;i++){
-                  elements[i]={
-                    title : articlesArr[i].title,
-                    subtitle : articlesArr[i].description.substring(0,80),
-                    image_url:articlesArr[i].urlsToImage,
-                    buttons: [
-                            {
-                                "title": "More on "+newsObj.source,
-                                "type": "web_url",
-                                "url":articlesArr[i].url,
-
-                            }
-                        ]
-                  }
-
-
-
-                }
-                var message = {
-                    attachment :{
-                        type:"template",
-                        payload:{
-                            template_type:"generic",
-                            elements:elements,
-                        }
-                    }
-                };
-                  sendMessage(userId, message)
-
+                getNewsTemplates(articlesArr, userId)
 
 
             }else{
@@ -639,6 +610,7 @@ function getTechnologyArticles(userId){
           outputArr = outputArr.concat(element);
       })
       outputArr = shuffleArticles(outputArr);
+      console.log(outputArr);
       getNewsTemplates(outputArr, userId);
       storeResultsInDB(category,userId,outputArr)
   }
