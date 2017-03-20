@@ -1,9 +1,9 @@
 var sendMessage = require('./sendMessage')
 
 module.exports=function getNewsTemplates(result, userId){
-
-  var elements = new Array(10)
-  for(var i=0; i<result.length&&i<10;i++){
+ var length = result.length>=10?10:result.length;
+  var elements = new Array(length)
+  for(var i=0; i<length;i++){
     elements[i]={
       title : result[i].title,
       subtitle : result[i].description.substring(0,80),
