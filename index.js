@@ -694,7 +694,7 @@ function getTechnologyArticles(userId){
     var options = {upsert:true};
     UserInput.findOneAndUpdate(query, update,options, function(err, result){
         if(err){
-            console.log("Database error: " err);
+            console.log("Database error: "+ err);
         }
     })
 
