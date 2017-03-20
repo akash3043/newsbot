@@ -296,6 +296,12 @@ function processMessage(event){
               getSourcesList(senderId);
             }else if(text==='category'){
                 getCategoryList(senderId);
+            }else if(text==='business'){
+                getBusinessArticles(senderId);
+            }else if(text==='technology'){
+                getTechnologyArticles(senderId);
+            }else if(text==='sport'){
+                getSportArticles(senderId);
             }
         }
     }
