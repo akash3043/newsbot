@@ -304,6 +304,8 @@ function processMessage(event){
                 getTechnologyArticles(senderId);
             }else if(text==='sport'){
                 getSportArticles(senderId);
+            }else if(text==='more'){
+                getMoreNewsArticles(senderId);
             }
         }
     }
@@ -703,4 +705,15 @@ function getTechnologyArticles(userId){
     };
       sendMessage(userId, message)
 
+  }
+
+  function getMoreNewsArticles(userId){
+    var query = {user_id:userId}
+    UserInput.findOne(query, function(err, result){
+      if(err){
+        sendMessage(userId, {text:"Something wnet wrong. Please try again"});
+      }else{
+          console.log(result);
+      }
+    })
   }
