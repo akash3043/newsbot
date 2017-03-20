@@ -691,7 +691,7 @@ function getTechnologyArticles(userId){
         category:category,
         counter : results.length>10?10:results.length
     }
-    var options : {upsert:true};
+    var options = {upsert:true};
     UserInput.findOneAndUpdate(query, update,options, function(err, result){
         if(err){
             console.log("Database error: " err);
