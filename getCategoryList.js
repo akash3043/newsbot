@@ -1,3 +1,4 @@
+var sendMessage = require('./sendMessage');
 module.exports=function getCategoryList(userId){
 
   var message ={
@@ -22,5 +23,7 @@ module.exports=function getCategoryList(userId){
               }
           }
       };
+
+      sendMessage(userId, message);
 
   }
