@@ -20,9 +20,3 @@ module.exports=function getNewsArticles(source, userId ){
         }
     })
 }
-
-
-
-sendMessage(userId, message);
-
-}
