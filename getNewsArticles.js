@@ -1,4 +1,4 @@
-var request = require('./request');
+var request = require('request');
 var getNewsTemplates = require('./getNewsTemplates');
 var sendMessage = require('./sendMessage');
 
